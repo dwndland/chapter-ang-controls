@@ -1,5 +1,29 @@
 <mat-tab-group>
-    <mat-tab label="DockPanel">Content 1</mat-tab>
+    <mat-tab label="DockPanel">
+        <ng-template matTabContent>
+            <div style="height: calc(100vh - 50px);">
+                <dock-panel>
+                    <div #dockItem dock="top" style="padding: 10px; height: 50px; background-color: aliceblue;">
+                        <dock-panel>
+                            <div #dockItem dock="left">
+                                <button mat-raised-button>Left Button</button>
+                            </div>
+                            <div #dockItem dock="right">
+                                <button mat-raised-button>Right Button</button>
+                            </div>
+                            <div #dockItem style="display: flex; justify-content: center;">
+                                <button mat-raised-button>Center Button</button>
+                            </div>
+                        </dock-panel>
+                    </div>
+                    <div #dockItem dock="bottom" style="height: 50px; background-color: lightblue;">Bottom</div>
+                    <div #dockItem dock="left" style="width: 50px; background-color: lightcyan;">Left</div>
+                    <div #dockItem dock="right" style="width: 50px; background-color: lightgray;">Right</div>
+                    <div #dockItem style="background-color: yellow;">Center</div>
+                </dock-panel>
+            </div>
+        </ng-template>
+    </mat-tab>
     <mat-tab label="StackPanel" disabled>Content 2</mat-tab>
     <mat-tab label="WrapPanel" disabled>Content 3</mat-tab>
     <mat-tab label="UniformGrid" disabled>Content 4</mat-tab>
