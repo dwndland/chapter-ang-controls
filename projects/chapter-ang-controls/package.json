@@ -1,12 +1,25 @@
 {
-  "name": "chapter-ang-controls",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/common": "^19.2.0",
-    "@angular/core": "^19.2.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+    "name": "chapter-ang-controls",
+    "version": "0.0.1",
+    "author": "David Wendland",
+    "homepage": "https://github.com/dwndland/chapter-ang-controls",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dwndland/chapter-ang-controls.git"
+    },
+    "keywords": [
+        "angular",
+        "controls",
+        "components",
+        "WPF",
+        "XAML",
+        "UI",
+        "Chapter"
+    ],
+    "peerDependencies": {
+        "@angular/common": ">=17.0.0",
+        "@angular/core": ">=17.0.0"
+    },
+    "sideEffects": false
 }
