@@ -5,6 +5,11 @@
   "projects": {
     "chapter-ang-controls": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/chapter-ang-controls",
       "sourceRoot": "projects/chapter-ang-controls/src",
       "prefix": "lib",
