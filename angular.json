@@ -70,6 +70,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "projects/demo/src/styles.scss"
             ],
             "scripts": []
@@ -129,6 +130,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "projects/demo/src/styles.scss"
             ],
             "scripts": []

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet],
+    imports: [
+        MatTabsModule
+    ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
