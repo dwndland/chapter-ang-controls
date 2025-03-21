@@ -39,6 +39,10 @@ export class DockPanelComponent implements AfterContentInit {
         this.renderer.setStyle(container, 'width', '100%');
         this.renderer.setStyle(container, 'height', '100%');
 
+        this.arrangeItems();
+    }
+
+    private arrangeItems(): void {
         let topOffset = 0;
         let bottomOffset = 0;
         let leftOffset = 0;

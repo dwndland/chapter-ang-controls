@@ -3,6 +3,7 @@
         <ng-template matTabContent>
             <div style="height: calc(100vh - 50px);">
                 <dock-panel>
+                    <!-- At the moment the dock-panel has no proper height so it needs a manual height/width if nested in another DockPanel -->
                     <div #dockItem dock="top" style="padding: 10px; height: 50px; background-color: aliceblue;">
                         <dock-panel>
                             <div #dockItem dock="left">
@@ -16,10 +17,10 @@
                             </div>
                         </dock-panel>
                     </div>
-                    <div #dockItem dock="bottom" style="height: 50px; background-color: lightblue;">Bottom</div>
-                    <div #dockItem dock="left" style="width: 50px; background-color: lightcyan;">Left</div>
-                    <div #dockItem dock="right" style="width: 50px; background-color: lightgray;">Right</div>
-                    <div #dockItem style="background-color: yellow;">Center</div>
+                    <div #dockItem dock="bottom" style="padding: 10px; background-color: lightblue;">Bottom</div>
+                    <div #dockItem dock="left" style="padding: 10px; background-color: lightcyan;">Left</div>
+                    <div #dockItem dock="right" style="padding: 10px; background-color: lightgray;">Right</div>
+                    <div #dockItem style="padding: 10px; background-color: yellow;">Center</div>
                 </dock-panel>
             </div>
         </ng-template>
