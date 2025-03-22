@@ -1,4 +1,4 @@
-import { Component, ContentChildren, QueryList, ElementRef, AfterContentInit, Renderer2, Input } from '@angular/core';
+import { Component, ContentChildren, QueryList, AfterContentInit, ElementRef, Renderer2 } from '@angular/core';
 import { Dock } from './dock';
 
 /**
@@ -9,8 +9,8 @@ import { Dock } from './dock';
  */
 @Component({
     selector: 'dock-panel',
-    template: `<div class="dock-container"><ng-content></ng-content></div>`,
-    styleUrls: ['./dock-panel.component.scss']
+    template: '<ng-content></ng-content>',
+    styles: [':host { display: grid; width: 100%; height: 100%; }']
 })
 export class DockPanelComponent implements AfterContentInit {
     /**
@@ -19,81 +19,99 @@ export class DockPanelComponent implements AfterContentInit {
      */
     @ContentChildren('dockItem', { descendants: false }) items!: QueryList<ElementRef>;
 
-    /**
-     * Determines whether the last child element should fill the remaining space.
-     * Defaults to `true`.
-     */
-    @Input() LastChildFill: boolean = true;
-
-    constructor(private renderer: Renderer2) {}
+    constructor(private renderer: Renderer2, private el: ElementRef) {}
 
     /**
      * Lifecycle hook that runs after the content is initialized.
      * Arranges child elements based on their `dock` attribute.
      */
     public ngAfterContentInit(): void {
-        let container = this.items.first?.nativeElement.parentElement;
-        if (!container) return;
+        const { columns, rows } = this.countColumnsAndRows();
 
-        this.renderer.setStyle(container, 'position', 'relative');
-        this.renderer.setStyle(container, 'width', '100%');
-        this.renderer.setStyle(container, 'height', '100%');
+        let currentLeftColumn = 1;
+        let currentTopRow = 1;
+        let currentRightColumn = columns.length;
+        let currentBottomRow = rows.length;
 
-        this.arrangeItems();
-    }
-
-    private arrangeItems(): void {
-        let topOffset = 0;
-        let bottomOffset = 0;
-        let leftOffset = 0;
-        let rightOffset = 0;
-        let lastItem: any = null;
-        let lastLeftOffset = 0;
-
+        // Arrange children based on their dock attribute
         this.items.forEach((item) => {
             const dock = item.nativeElement.getAttribute('dock') as Dock;
-            this.renderer.setStyle(item.nativeElement, 'position', 'absolute');
 
-            lastItem = item.nativeElement;
-
+            // +1 for all the end columns and rows because its exclusive.
             switch (dock) {
                 case Dock.Top:
-                    this.renderer.setStyle(item.nativeElement, 'top', `${topOffset}px`);
-                    this.renderer.setStyle(item.nativeElement, 'left', '0');
-                    this.renderer.setStyle(item.nativeElement, 'right', '0');
-                    topOffset += item.nativeElement.offsetHeight;
+                    this.renderer.setStyle(item.nativeElement, 'grid-column', `${currentLeftColumn} / ${currentRightColumn + 1}`);
+                    this.renderer.setStyle(item.nativeElement, 'grid-row', `${currentTopRow}`);
+                    ++currentTopRow;
                     break;
 
                 case Dock.Bottom:
-                    bottomOffset += item.nativeElement.offsetHeight;
-                    this.renderer.setStyle(item.nativeElement, 'bottom', `${bottomOffset - item.nativeElement.offsetHeight}px`);
-                    this.renderer.setStyle(item.nativeElement, 'left', '0');
-                    this.renderer.setStyle(item.nativeElement, 'right', '0');
+                    this.renderer.setStyle(item.nativeElement, 'grid-column', `${currentLeftColumn} / ${currentRightColumn + 1}`);
+                    this.renderer.setStyle(item.nativeElement, 'grid-row', `${currentBottomRow}`);
+                    --currentBottomRow;
                     break;
 
                 case Dock.Left:
-                default:
-                    this.renderer.setStyle(item.nativeElement, 'top', `${topOffset}px`);
-                    this.renderer.setStyle(item.nativeElement, 'bottom', `${bottomOffset}px`);
-                    this.renderer.setStyle(item.nativeElement, 'left', `${leftOffset}px`);
-                    lastLeftOffset = leftOffset;
-                    leftOffset += item.nativeElement.offsetWidth;
+                    this.renderer.setStyle(item.nativeElement, 'grid-column', `${currentLeftColumn}`);
+                    this.renderer.setStyle(item.nativeElement, 'grid-row', `${currentTopRow} / ${currentBottomRow + 1}`);
+                    ++currentLeftColumn;
                     break;
 
                 case Dock.Right:
-                    rightOffset += item.nativeElement.offsetWidth;
-                    this.renderer.setStyle(item.nativeElement, 'top', `${topOffset}px`);
-                    this.renderer.setStyle(item.nativeElement, 'bottom', `${bottomOffset}px`);
-                    this.renderer.setStyle(item.nativeElement, 'right', `${rightOffset - item.nativeElement.offsetWidth}px`);
+                    this.renderer.setStyle(item.nativeElement, 'grid-column', `${currentRightColumn}`);
+                    this.renderer.setStyle(item.nativeElement, 'grid-row', `${currentTopRow} / ${currentBottomRow + 1}`);
+                    --currentRightColumn;
+                    break;
+
+                default:
+                    this.renderer.setStyle(item.nativeElement, 'grid-column', `${currentLeftColumn} / ${currentRightColumn}`);
+                    this.renderer.setStyle(item.nativeElement, 'grid-row', `${currentTopRow} / ${currentBottomRow}`);
                     break;
             }
         });
 
-        if (this.LastChildFill && lastItem) {
-            this.renderer.setStyle(lastItem, 'top', `${topOffset}px`);
-            this.renderer.setStyle(lastItem, 'bottom', `${bottomOffset}px`);
-            this.renderer.setStyle(lastItem, 'left', `${lastLeftOffset}px`);
-            this.renderer.setStyle(lastItem, 'right', `${rightOffset}px`);
+        this.renderer.setStyle(this.el.nativeElement, 'grid-template-columns', columns.join(' '));
+        this.renderer.setStyle(this.el.nativeElement, 'grid-template-rows', rows.join(' '));
+    }
+
+    private countColumnsAndRows(): { columns: string[]; rows: string[] } {
+        let topRows: string[] = [];
+        let bottomRows: string[] = [];
+        let leftCols: string[] = [];
+        let rightCols: string[] = [];
+        let hasFill = false;
+
+        // First pass: Determine the grid structure
+        this.items.forEach((item) => {
+            const dock = item.nativeElement.getAttribute('dock') as Dock;
+            switch (dock) {
+                case 'top':
+                    topRows.push('auto');
+                    break;
+                case 'bottom':
+                    bottomRows.unshift('auto');
+                    break;
+                case 'left':
+                    leftCols.push('auto');
+                    break;
+                case 'right':
+                    rightCols.unshift('auto');
+                    break;
+                default:
+                    hasFill = true;
+                    break;
+            }
+        });
+
+        // Add a fill area if necessary
+        if (hasFill) {
+            topRows.push('1fr');
+            leftCols.push('1fr');
         }
+
+        return {
+            columns: [...leftCols, ...rightCols],
+            rows: [...topRows, ...bottomRows]
+        };
     }
 }
