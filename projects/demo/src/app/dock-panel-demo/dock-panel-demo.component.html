@@ -1,0 +1,20 @@
+<dock-panel>
+    <div #dockItem dock="top" style="padding: 10px; background-color: #4f4f4f">Top 1</div>
+    <div #dockItem dock="top" style="padding: 10px; background-color: #5c5c5c;">
+        <dock-panel>
+            <div #dockItem dock="left">
+                <button mat-raised-button>Left Button</button>
+            </div>
+            <div #dockItem dock="right">
+                <button mat-raised-button>Right Button</button>
+            </div>
+            <div #dockItem style="display: flex; justify-content: center">
+                <button mat-raised-button>Center Button</button>
+            </div>
+        </dock-panel>
+    </div>
+    <div #dockItem dock="bottom" style="padding: 10px; background-color: #707070">Bottom</div>
+    <div #dockItem dock="left" style="padding: 10px; background-color: #858585">Left</div>
+    <div #dockItem dock="right" style="padding: 10px; background-color: #9c9c9c">Right</div>
+    <div #dockItem style="padding: 10px; background-color: #bfbfbf">Center</div>
+</dock-panel>

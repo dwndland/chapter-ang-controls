@@ -2,26 +2,7 @@
     <mat-tab label="DockPanel">
         <ng-template matTabContent>
             <div style="height: calc(100vh - 49px);">
-                <dock-panel>
-                    <div #dockItem dock="top" style="padding: 10px; background-color: #4F4F4F;">Top 1</div>
-                    <div #dockItem dock="top" style="padding: 10px; background-color: #5C5C5C;">
-                        <dock-panel>
-                            <div #dockItem dock="left">
-                                <button mat-raised-button>Left Button</button>
-                            </div>
-                            <div #dockItem dock="right">
-                                <button mat-raised-button>Right Button</button>
-                            </div>
-                            <div #dockItem style="display: flex; justify-content: center;">
-                                <button mat-raised-button>Center Button</button>
-                            </div>
-                        </dock-panel>
-                    </div>
-                    <div #dockItem dock="bottom" style="padding: 10px; background-color: #707070;">Bottom</div>
-                    <div #dockItem dock="left" style="padding: 10px; background-color: #858585;">Left</div>
-                    <div #dockItem dock="right" style="padding: 10px; background-color: #9C9C9C;">Right</div>
-                    <div #dockItem style="padding: 10px; background-color: #BFBFBF;">Center</div>
-                </dock-panel>
+                <app-dock-panel-demo></app-dock-panel-demo>
             </div>
         </ng-template>
     </mat-tab>
