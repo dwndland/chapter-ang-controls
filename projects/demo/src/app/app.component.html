@@ -3,8 +3,7 @@
         <ng-template matTabContent>
             <div style="height: calc(100vh - 50px);">
                 <dock-panel>
-                    <!-- At the moment the dock-panel has no proper height so it needs a manual height/width if nested in another DockPanel -->
-                    <div #dockItem dock="top" style="padding: 10px; height: 50px; background-color: aliceblue;">
+                    <div #dockItem dock="top" style="padding: 10px; background-color: aliceblue;">
                         <dock-panel>
                             <div #dockItem dock="left">
                                 <button mat-raised-button>Left Button</button>

@@ -26,15 +26,26 @@ export class DockPanelComponent implements AfterContentInit {
      * Arranges child elements based on their `dock` attribute.
      */
     public ngAfterContentInit(): void {
-        const { columns, rows } = this.countColumnsAndRows();
+        this.items.changes.subscribe(() => {
+            this.updateLayout();
+        });
+
+        this.updateLayout();
+    }
+
+    private updateLayout(): void {
+        const sortedItems = this.items.toArray().sort((a, b) => {
+            return a.nativeElement.compareDocumentPosition(b.nativeElement) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+        });
+
+        const { columns, rows } = this.countColumnsAndRows(sortedItems);
 
         let currentLeftColumn = 1;
         let currentTopRow = 1;
         let currentRightColumn = columns.length;
         let currentBottomRow = rows.length;
 
-        // Arrange children based on their dock attribute
-        this.items.forEach((item) => {
+        sortedItems.forEach((item) => {
             const dock = item.nativeElement.getAttribute('dock') as Dock;
 
             // +1 for all the end columns and rows because its exclusive.
@@ -74,15 +85,14 @@ export class DockPanelComponent implements AfterContentInit {
         this.renderer.setStyle(this.el.nativeElement, 'grid-template-rows', rows.join(' '));
     }
 
-    private countColumnsAndRows(): { columns: string[]; rows: string[] } {
+    private countColumnsAndRows(sortedItems: ElementRef<any>[]): { columns: string[]; rows: string[] } {
         let topRows: string[] = [];
         let bottomRows: string[] = [];
         let leftCols: string[] = [];
         let rightCols: string[] = [];
         let hasFill = false;
 
-        // First pass: Determine the grid structure
-        this.items.forEach((item) => {
+        sortedItems.forEach((item) => {
             const dock = item.nativeElement.getAttribute('dock') as Dock;
             switch (dock) {
                 case 'top':
