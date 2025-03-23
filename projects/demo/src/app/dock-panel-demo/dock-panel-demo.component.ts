@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { DockPanelComponent } from '../../../../chapter-ang-controls/src/lib/dock-panel/dock-panel.component';
+import { DockPanelComponent } from '@chapter-ang-controls';
 
 @Component({
     selector: 'app-dock-panel-demo',

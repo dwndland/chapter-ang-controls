@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UniformGridComponent } from '../../../../chapter-ang-controls/src/lib/uniform-grid/uniform-grid.component';
+import { UniformGridComponent } from '@chapter-ang-controls';
 
 @Component({
     selector: 'app-uniform-grid-demo',

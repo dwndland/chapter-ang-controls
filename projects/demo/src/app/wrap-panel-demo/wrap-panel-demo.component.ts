@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WrapPanelComponent } from '../../../../chapter-ang-controls/src/lib/wrap-panel/wrap-panel.component';
+import { WrapPanelComponent } from '@chapter-ang-controls';
 
 @Component({
     selector: 'app-wrap-panel-demo',

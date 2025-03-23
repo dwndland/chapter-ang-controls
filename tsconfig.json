@@ -4,8 +4,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "chapter-ang-controls": [
-        "./dist/chapter-ang-controls"
+      "@chapter-ang-controls": [
+        "./projects/chapter-ang-controls/src/public-api"
       ]
     },
     "outDir": "./dist/out-tsc",

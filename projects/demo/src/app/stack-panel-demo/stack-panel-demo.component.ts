@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StackPanelComponent } from '../../../../chapter-ang-controls/src/lib/stack-panel/stack-panel.component';
+import { StackPanelComponent } from '@chapter-ang-controls';
 
 @Component({
     selector: 'app-stack-panel-demo',
