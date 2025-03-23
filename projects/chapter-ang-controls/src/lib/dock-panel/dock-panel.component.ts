@@ -95,16 +95,16 @@ export class DockPanelComponent implements AfterContentInit {
         sortedItems.forEach((item) => {
             const dock = item.nativeElement.getAttribute('dock') as Dock;
             switch (dock) {
-                case 'top':
+                case Dock.Top:
                     topRows.push('auto');
                     break;
-                case 'bottom':
+                case Dock.Bottom:
                     bottomRows.unshift('auto');
                     break;
-                case 'left':
+                case Dock.Left:
                     leftCols.push('auto');
                     break;
-                case 'right':
+                case Dock.Right:
                     rightCols.unshift('auto');
                     break;
                 default:
