@@ -1,5 +1,5 @@
 import { Component, Input, HostBinding } from '@angular/core';
-import { Orientation } from './orientation';
+import { Orientation } from '../orientation';
 
 /**
  * StackPanelComponent
