@@ -1,0 +1,23 @@
+<grid>
+    <columnDefinitions>
+        <columnDefinition width="1fr"></columnDefinition>
+        <columnDefinition width="1fr"></columnDefinition>
+        <columnDefinition width="1fr"></columnDefinition>
+    </columnDefinitions>
+    <rowDefinitions>
+        <rowDefinition height="auto"></rowDefinition>
+        <rowDefinition height="auto"></rowDefinition>
+        <rowDefinition height="auto"></rowDefinition>
+        <rowDefinition height="auto"></rowDefinition>
+    </rowDefinitions>
+    <div [gridColumn]="0" [gridRow]="0" style="background: #474747">Column 1 Row 1</div>
+    <div [gridColumn]="1" [gridRow]="0" style="background: #545454">Column 2 Row 1</div>
+    <div [gridColumn]="2" [gridRow]="0" style="background: #616161">Column 3 Row 1</div>
+
+    <div [gridColumn]="0" [gridRow]="1" style="background: #6e6e6e">Column 1 Row 2</div>
+    <div [gridColumn]="1" [gridRow]="1" style="background: #7b7b7b">Column 2 Row 2</div>
+    <div [gridColumn]="2" [gridRow]="1" style="background: #888888">Column 3 Row 2</div>
+
+    <div [gridColumn]="0" [gridColumnSpan]="2" [gridRow]="2" style="background: #959595">Column 1 ColumnSpan 2 Row 3</div>
+    <div [gridColumn]="1" [gridColumnSpan]="2" [gridRow]="3" style="background: #a2a2a2">Column 2 ColumnSpan 2 Row 4</div>
+</grid>

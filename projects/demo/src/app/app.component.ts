@@ -4,12 +4,14 @@ import { DockPanelDemoComponent } from './dockPanel-demo/dockPanel-demo.componen
 import { StackPanelDemoComponent } from './stackPanel-demo/stackPanel-demo.component';
 import { UniformGridDemoComponent } from './uniformGrid-demo/uniformGrid-demo.component';
 import { WrapPanelDemoComponent } from './wrapPanel-demo/wrapPanel-demo.component';
+import { GridDemoComponent } from './grid-demo/grid-demo.component';
 
 @Component({
     selector: 'app-root',
     imports: [
         MatTabsModule,
         DockPanelDemoComponent,
+        GridDemoComponent,
         StackPanelDemoComponent,
         UniformGridDemoComponent,
         WrapPanelDemoComponent
