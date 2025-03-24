@@ -8,7 +8,7 @@ import { Dock } from './dock';
  * Supports docking to the top, bottom, left, right, or filling the remaining space.
  */
 @Component({
-    selector: 'dock-panel',
+    selector: 'dockPanel',
     template: '<ng-content></ng-content>',
     styles: [':host { display: grid; width: 100%; height: 100%; }']
 })

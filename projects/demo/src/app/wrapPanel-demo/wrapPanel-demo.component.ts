@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { WrapPanelComponent } from '@chapter-ang-controls';
 
 @Component({
-    selector: 'app-wrap-panel-demo',
+    selector: 'app-wrapPanel-demo',
     imports: [
         WrapPanelComponent
     ],
-    templateUrl: './wrap-panel-demo.component.html',
-    styleUrl: './wrap-panel-demo.component.scss'
+    templateUrl: './wrapPanel-demo.component.html',
+    styleUrl: './wrapPanel-demo.component.scss'
 })
 export class WrapPanelDemoComponent {}

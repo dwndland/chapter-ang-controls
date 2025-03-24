@@ -6,7 +6,7 @@ import { AfterContentInit, Component, ContentChildren, ElementRef, HostBinding, 
  * A container component that arranges its child elements in a uniform grid.
  */
 @Component({
-    selector: 'uniform-grid',
+    selector: 'uniformGrid',
     template: '<ng-content></ng-content>',
     styles: [':host { display: grid; width: 100%; height: 100%; }']
 })

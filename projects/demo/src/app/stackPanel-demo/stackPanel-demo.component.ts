@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { StackPanelComponent } from '@chapter-ang-controls';
 
 @Component({
-    selector: 'app-stack-panel-demo',
+    selector: 'app-stackPanel-demo',
     imports: [
       StackPanelComponent
     ],
-    templateUrl: './stack-panel-demo.component.html',
-    styleUrl: './stack-panel-demo.component.scss'
+    templateUrl: './stackPanel-demo.component.html',
+    styleUrl: './stackPanel-demo.component.scss'
 })
 export class StackPanelDemoComponent {}

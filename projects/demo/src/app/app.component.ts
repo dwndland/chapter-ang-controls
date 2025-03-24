@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { DockPanelDemoComponent } from './dock-panel-demo/dock-panel-demo.component';
-import { StackPanelDemoComponent } from './stack-panel-demo/stack-panel-demo.component';
-import { UniformGridDemoComponent } from './uniform-grid-demo/uniform-grid-demo.component';
-import { WrapPanelDemoComponent } from './wrap-panel-demo/wrap-panel-demo.component';
+import { DockPanelDemoComponent } from './dockPanel-demo/dockPanel-demo.component';
+import { StackPanelDemoComponent } from './stackPanel-demo/stackPanel-demo.component';
+import { UniformGridDemoComponent } from './uniformGrid-demo/uniformGrid-demo.component';
+import { WrapPanelDemoComponent } from './wrapPanel-demo/wrapPanel-demo.component';
 
 @Component({
     selector: 'app-root',

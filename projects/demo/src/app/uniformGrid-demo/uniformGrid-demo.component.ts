@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { UniformGridComponent } from '@chapter-ang-controls';
 
 @Component({
-    selector: 'app-uniform-grid-demo',
+    selector: 'app-uniformGrid-demo',
     imports: [
       UniformGridComponent
     ],
-    templateUrl: './uniform-grid-demo.component.html',
-    styleUrl: './uniform-grid-demo.component.scss'
+    templateUrl: './uniformGrid-demo.component.html',
+    styleUrl: './uniformGrid-demo.component.scss'
 })
 export class UniformGridDemoComponent {}

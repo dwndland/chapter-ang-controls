@@ -3,12 +3,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { DockPanelComponent } from '@chapter-ang-controls';
 
 @Component({
-    selector: 'app-dock-panel-demo',
+    selector: 'app-dockPanel-demo',
     imports: [
       DockPanelComponent,
       MatButtonModule
     ],
-    templateUrl: './dock-panel-demo.component.html',
-    styleUrl: './dock-panel-demo.component.scss'
+    templateUrl: './dockPanel-demo.component.html',
+    styleUrl: './dockPanel-demo.component.scss'
 })
 export class DockPanelDemoComponent {}

@@ -8,7 +8,7 @@ import { Orientation } from '../orientation';
  * Supports horizontal and vertical layout directions.
  */
 @Component({
-    selector: 'stack-panel',
+    selector: 'stackPanel',
     template: '<ng-content></ng-content>',
     styles: [':host {  display: flex;  }']
 })

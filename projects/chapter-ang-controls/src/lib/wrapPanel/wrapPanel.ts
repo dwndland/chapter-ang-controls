@@ -2,7 +2,7 @@ import { Component, Input, HostBinding } from '@angular/core';
 import { Orientation } from '../orientation';
 
 @Component({
-    selector: 'wrap-panel',
+    selector: 'wrapPanel',
     template: '<ng-content></ng-content>',
     styles: [':host { display: flex; flex-wrap: wrap; width: 100%; height: 100%; }']
 })
