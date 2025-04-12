@@ -1,3 +1,5 @@
+![Chapter](https://raw.githubusercontent.com/dwndland/chapter-ang-controls/master/Icon.png)
+
 # Chapter Ang Controls
 
 This project is a library for Angular controls targeting WPF/XAML developers.
