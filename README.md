@@ -2,7 +2,7 @@
 
 # Chapter Ang Controls
 
-This project is a library for Angular controls targeting WPF/XAML developers.
+chapter-ang-controls is a library that provides a collection of Angular controls designed for WPF and XAML developers, offering familiar patterns and functionality from the XAML ecosystem.
 
 ## Installation
 
